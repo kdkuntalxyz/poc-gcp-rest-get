@@ -38,9 +38,9 @@
 
 steps:
   - name: 'gcr.io/cloud-builders/mvn'
-    args: ['package']
+    args: [ 'package' ]
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy', '/app.yaml']
+    args: [ 'app', 'deploy', '/app.yaml' ]
     dir: "target"
-    options:
-        logging: CLOUD_LOGGING_ONLY
+  options:
+    logging: CLOUD_LOGGING_ONLY

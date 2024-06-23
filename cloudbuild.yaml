@@ -21,6 +21,6 @@ steps:
       - '--image'
       - 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'
       - '--region'
-      - 'global(non-regional)'
+      - 'asia-south2'
   images:
     - 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'

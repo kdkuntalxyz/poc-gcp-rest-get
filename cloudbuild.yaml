@@ -15,36 +15,36 @@
 #options:
 #  logging: CLOUD_LOGGING_ONLY
 
-#steps:
-#  - name: 'gcr.io/cloud-builders/mvn'
-#    args: [ 'install' ]
-#  # Build the container image
-#  - name: 'gcr.io/cloud-builders/docker'
-#    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/poc-gcp-rest-get', '.' ]
-#  # Push the container image to Container Registry
-#  - name: 'gcr.io/cloud-builders/docker'
-#    args: [ 'push', 'gcr.io/$PROJECT_ID/poc-gcp-rest-get' ]
-#  # Deploy container image to Cloud Run
-#  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#    entrypoint: gcloud
-#    args:
-#      - 'run'
-#      - 'deploy'
-#      - 'SERVICE_NAME'
-#      - '--image'
-#      - 'gcr.io/$PROJECT_ID/poc-gcp-rest-get'
-#      - '--region'
-#      - 'global(non-regional)'
-#images:
-#  - 'gcr.io/$PROJECT_ID/poc-gcp-rest-get'
-#options:
-#  logging: CLOUD_LOGGING_ONLY
-
 steps:
   - name: 'gcr.io/cloud-builders/mvn'
-    args: ['install']
+    args: [ 'install' ]
+  # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'global-docker.pkg.dev/$PROJECT_ID/${_SERVICE_NAME}', '.' ]
-images: ['gcr.io/$PROJECT_ID/poc-gcp-rest-get']
+    args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/poc-gcp-rest-get', '.' ]
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'gcr.io/$PROJECT_ID/poc-gcp-rest-get' ]
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'SERVICE_NAME'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/poc-gcp-rest-get'
+      - '--region'
+      - 'asia-east1'
+images:
+  - 'gcr.io/$PROJECT_ID/poc-gcp-rest-get'
 options:
   logging: CLOUD_LOGGING_ONLY
+
+#steps:
+#  - name: 'gcr.io/cloud-builders/mvn'
+#    args: ['install']
+#  - name: 'gcr.io/cloud-builders/docker'
+#    args: [ 'build', '-t', 'asia-east1-docker.pkg.dev/$PROJECT_ID/${_SERVICE_NAME}', '.' ]
+#images: ['gcr.io/$PROJECT_ID/poc-gcp-rest-get']
+#options:
+#  logging: CLOUD_LOGGING_ONLY

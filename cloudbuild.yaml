@@ -44,7 +44,7 @@ steps:
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['install']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--tag=gcr.io/$PROJECT_ID/poc-gcp-rest-get', '.']
+    args: [ 'build', '-t', 'asia-south2-docker.pkg.dev/$PROJECT_ID/${_SERVICE_NAME}', '.' ]
 images: ['gcr.io/$PROJECT_ID/poc-gcp-rest-get']
 options:
   logging: CLOUD_LOGGING_ONLY

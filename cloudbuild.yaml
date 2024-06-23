@@ -1,4 +1,6 @@
 steps:
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: [ 'install' ]
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/poc-gcp-rest-get:$COMMIT_SHA', '.' ]

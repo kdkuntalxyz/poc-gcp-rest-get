@@ -1,8 +1,10 @@
 steps:
   - name: 'gcr.io/cloud-builders/mvn'
-    args: ['install']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--tag=gcr.io/$PROJECT_ID/${_SERVICE_NAME}', '.']
+    args: [ 'install' ]
     options:
       logging: CLOUD_LOGGING_ONLY
-images: ['gcr.io/$PROJECT_ID/${_SERVICE_NAME}']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '--tag=gcr.io/$PROJECT_ID/${_SERVICE_NAME}', '.' ]
+    options:
+      logging: CLOUD_LOGGING_ONLY
+images: [ 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}' ]

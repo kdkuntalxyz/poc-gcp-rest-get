@@ -1,7 +1,6 @@
 steps:
-  - name: maven:3.11.0-jdk17
-    entrypoint: mvn
-    args: ['package','-Dmaven.test.skip=true']
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: [ 'install' ]
 artifacts:
   mavenArtifacts:
     - repository: 'https://asia-east1-maven.pkg.dev/theta-ocean-427217-h5/poc-artifact-repo'

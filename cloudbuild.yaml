@@ -1,11 +1,11 @@
 steps:
   - id: "Lint"
     name: maven:3-openjdk-17
-    args: ["mvn", "compile"]
+    args: [ "mvn", "compile" ]
 
-#  - id: "Run Unit Tests"
-#    name: maven:3-openjdk-17
-#    args: ["mvn", "test"]
+  #  - id: "Run Unit Tests"
+  #    name: maven:3-openjdk-17
+  #    args: ["mvn", "test"]
 
   # Setup resources for system tests
   - id: "Build Container Image"
@@ -80,7 +80,8 @@ substitutions:
   _SERVICE_NAME: poc-gcp-rest-get
   _DEPLOY_REGION: asia-east1
   _REPOSITORY: poc-artifact-repo
-
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 
 

@@ -9,6 +9,8 @@ artifacts:
       artifactId: 'poc-artifact-repo'
       groupId: 'com.deep.poc'
       version: '0.0.1-SNAPSHOT'
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 
 

@@ -7,17 +7,15 @@ steps:
   #    name: maven:3-openjdk-17
   #    args: ["mvn", "test"]
 
-#  # Setup resources for system tests
-#  - id: "Build Container Image"
-#    name: "gcr.io/k8s-skaffold/pack"
-#    entrypoint: pack
-#    args:
-#      - build
-#      - "$_GCR_HOSTNAME/$PROJECT_ID/$_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA" # Tag docker image with git commit SHA
-#      - "--builder=gcr.io/buildpacks/builder:latest"
-#      - "--path=."
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', '$_GCR_HOSTNAME/$PROJECT_ID/$_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA', '.' ]
+  # Setup resources for system tests
+  - id: "Build Container Image"
+    name: "gcr.io/k8s-skaffold/pack"
+    entrypoint: pack
+    args:
+      - build
+      - "$_GCR_HOSTNAME/$PROJECT_ID/$_REPOSITORY/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA" # Tag docker image with git commit SHA
+      - "--builder=gcr.io/buildpacks/builder:latest"
+      - "--path=."
 
   - id: "Push Container Image"
     name: "gcr.io/cloud-builders/docker:latest"
@@ -81,7 +79,7 @@ substitutions:
   _GCR_HOSTNAME: asia-east1-docker.pkg.dev
   _SERVICE_NAME: poc-gcp-rest-get
   _DEPLOY_REGION: asia-east1
-  _REPOSITORY: poc-artifact-repo
+  _REPOSITORY: cloud-run-source-deploy
 options:
   logging: CLOUD_LOGGING_ONLY
 

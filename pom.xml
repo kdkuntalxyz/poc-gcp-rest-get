@@ -72,7 +72,7 @@
                 <version>3.4.2</version>
                 <configuration>
                     <to>
-                        <image>gcr.io/$PROJECT_ID/poc-gcp-rest-get:manual</image>
+                        <image>gcr.io/$PROJECT_ID/poc-artifact-repo:manual</image>
                     </to>
                 </configuration>
             </plugin>

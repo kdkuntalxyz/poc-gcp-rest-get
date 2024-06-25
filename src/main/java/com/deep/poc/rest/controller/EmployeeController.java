@@ -8,14 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 @Log4j2
+@CrossOrigin
 public class EmployeeController {
 
     @Autowired
@@ -27,10 +25,16 @@ public class EmployeeController {
         ResponseEntity<Employee> responseEntity = employeeService.findById(id);
         log.info("invoking rest call done");
 
-        if (responseEntity.getStatusCode()== HttpStatus.OK) {
+        if (responseEntity.getStatusCode() == HttpStatus.OK) {
             return new ResponseEntity<>(responseEntity.getBody(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(responseEntity.getStatusCode());
         }
+    }
+
+    @GetMapping("/welcome")
+    public ResponseEntity<String> welcome() {
+        log.info("inside welcome");
+        return new ResponseEntity<>("Welcome KD.", HttpStatus.OK);
     }
 }

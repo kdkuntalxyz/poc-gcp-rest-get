@@ -2,18 +2,15 @@ package com.deep.poc.rest.controller;
 
 import com.deep.poc.rest.data.Employee;
 import com.deep.poc.rest.service.EmployeeService;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 @Log4j2
-@CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.GET }, allowedHeaders = "*")
 public class EmployeeController {
 
     @Autowired

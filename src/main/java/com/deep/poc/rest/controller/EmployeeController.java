@@ -32,6 +32,6 @@ public class EmployeeController {
     @GetMapping("/welcome")
     public ResponseEntity<String> welcome() {
         log.info("inside welcome");
-        return new ResponseEntity<>("Welcome KD. Hello2.", HttpStatus.OK);
+        return new ResponseEntity<>("Welcome KD. external rest call gcp poc completed.", HttpStatus.OK);
     }
 }
